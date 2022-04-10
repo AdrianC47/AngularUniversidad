@@ -1,2 +1,11 @@
-<span>{{ title }} La app está corriendo Adrian!!! </span>     <!-- aquí el title es un  atributo que estoy llamando de mi clase en typescript -->
-<span>{{ saludo }}</span>
+<div style="text-align: center;">
+    <h1>Bienvenido: {{titulo}}</h1>
+    <app-personas></app-personas> <!--Lo que pasa aqui es que se va a incluir el contenido del componente appersonas por medio del  selector -->
+</div>
+
+<!--El orden iria primero llamo al html luego al archivo de typescript y luego al otro archivo html
+es decir esto es single page application SPA: 
+           1.Primero va el index.html, en el index se pone el decorador de la clase creada en mi archivo de ts
+           2.En el archivo de ts indico mi archivo html que hace referencia a mi plantilla html u otro archivo html
+           3. Aquí se puede ver que tengo otro selector por ende se iría ahora a mi archivo de ts de mi selector es decir personas.component.ts
+           4. Por ultimo aca mi archivo de ts llama a otro archivo html el cual tiene una etiqueta h1-->
