@@ -11,6 +11,6 @@ import { AppComponent } from './app.component';
     BrowserModule
   ],
   providers: [], //atributo
-  bootstrap: [AppComponent] //atributo que indica como se levanta la aplicación 
+  bootstrap: [AppComponent] //atributo que indica como se levanta la aplicación por medio del componente AppComponent
 })
-export class AppModule { }
+export class AppModule { } //este es el nombre de la clase

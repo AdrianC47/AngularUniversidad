@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core';//Como es propio de Angular, le importo de la libreria
 
 @Component({ //Decorador propio de Angular que esta importado en la primera linea
   selector: 'app-root', //atributo . Es el nombre que se usa dentro del intex.html
