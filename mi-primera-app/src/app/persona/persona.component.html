@@ -3,3 +3,10 @@
     Apellido: {{apellido + 2 }}
     Edad: {{edad +5}}
 </p>
+<!--Interpolacion es {{}}-->
+<div (keyup)="0"> <!--Aqui se captura el evento cuando aplastamos alguna tecla-->
+    <!--Una vez capturado el evento podemos por medio de la interpolacion mostrar lo que está escrito-->
+    <label>Repetidor:</label>
+    <input #entrada />
+    {{entrada.value}}
+</div>
