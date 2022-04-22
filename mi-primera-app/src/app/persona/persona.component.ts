@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({ //decorador
   selector: 'app-persona', //selector
@@ -7,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonaComponent   {
 
-  constructor() { }
-
- 
-
+  nombre: string ='Adrian'; //atributo
+  apellido: string = 'Cabrera'; // no es necesario indicar el tipo de atributo
+  edad: number=22;
+  //private edad: number =22;
+  /*
+  getEdad() :number{
+    return this.edad;
+  }
+  */
 }
+
