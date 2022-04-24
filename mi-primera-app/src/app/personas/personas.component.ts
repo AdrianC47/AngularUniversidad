@@ -8,13 +8,17 @@ import { Component } from "@angular/core";
     // <app-persona></app-persona>
     // <app-persona></app-persona>`// Esto se lo conoce como componente en linea , lo cual se recomienda usar solo cuando se tengan pocas lineas html
     //Las hojas de estilo tambien se pueden definir en linea
-    // styleUrls: ['./personas.component.css'] 
-    styles: [`
-        h1{
-            color:blue;
-        }
-    `]
+     styleUrls: ['./personas.component.css'] 
+    // styles: [`
+    //     h1{
+    //         color:blue;
+    //     }
+    // `]
 })
 export class PersonasComponent{ //clase 
     desabilitar = false;
+    mensaje = 'No se ha agregado ninguna persona';
+    agregarPersona(){
+        this.mensaje = 'Persona agregada';
+    }
 }
