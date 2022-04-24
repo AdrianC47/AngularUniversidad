@@ -9,9 +9,12 @@
       <app-persona></app-persona>
 
       <label>Título Persona</label>
-      <input type ="text" class ='form-control' (input)="modificarTitulo($event)">
+      <!-- <input type ="text" class ='form-control' (input)="modificarTitulo($event)"> -->
+      <input type ="text" class = "form-control" [(ngModel)] = 'titulo'> <!--Usaremos la propiedad del modulo de formularios para poder usar el two way binding-->
+      <!--No olvidar que los corchetes se usan para el event binding
+      y los parentesis para el property binding-->
       {{titulo}} 
-      <br>
+      <br> 
       <!--el $event es una  variable que se usa en Angular para 
       capturar la informacion de un input text o cualquier elemento html que proporcione informacion que queramos capturarla-->
     </div>
