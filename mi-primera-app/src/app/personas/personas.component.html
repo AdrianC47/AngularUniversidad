@@ -3,10 +3,17 @@
     <div class="col">
       <h1>Listado de Personas</h1>
       <button class="btn btn-primary" [disabled]="desabilitar"
-      (click)="agregarPersona()">Agregar Persona</button> <!--En javascript se usa el onclick pero para angular se usa el (click) y se le asigna un metodo-->
+      (click)="agregarPersona()">Agregar Persona</button> <!--En eventos En javascript se usa el onclick pero para angular se usa el (click) y se le asigna un metodo-->
       
       <p>{{mensaje}}</p>
       <app-persona></app-persona>
+
+      <label>Título Persona</label>
+      <input type ="text" class ='form-control' (input)="modificarTitulo($event)">
+      {{titulo}} 
+      <br>
+      <!--el $event es una  variable que se usa en Angular para 
+      capturar la informacion de un input text o cualquier elemento html que proporcione informacion que queramos capturarla-->
     </div>
   </div>
 </div>

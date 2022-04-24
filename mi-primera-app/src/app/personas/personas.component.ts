@@ -18,7 +18,15 @@ import { Component } from "@angular/core";
 export class PersonasComponent{ //clase 
     desabilitar = false;
     mensaje = 'No se ha agregado ninguna persona';
+    titulo ="";
     agregarPersona(){
         this.mensaje = 'Persona agregada';
+    }
+    modificarTitulo(event: Event){ // variable event de tipo Event
+        console.log('Entrando a metodo modificar titulo');
+        this.titulo= (<HTMLInputElement>event.target).value; //Para poder acceder a la variable event debo poner el target ya que hace referencia al
+     // elemento html que se ejecuta en ese momento es decir  hace referencia al input. Pero se debe hacer  una conversion para poder
+     //acceder al elemento lo cual se hace con el <HTMLInputElement>
+     
     }
 }
