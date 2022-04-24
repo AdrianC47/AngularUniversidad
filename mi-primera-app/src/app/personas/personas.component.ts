@@ -16,5 +16,5 @@ import { Component } from "@angular/core";
     `]
 })
 export class PersonasComponent{ //clase 
-
+    desabilitar = false;
 }

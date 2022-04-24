@@ -6,6 +6,6 @@ import { Component } from '@angular/core';//Como es propio de Angular, le import
   styleUrls: ['./app.component.css'] // estilo css
 })
 export class AppComponent { //esto es una clase de TypeScript
-  titulo = '¡¡¡Hello friend desde Angular!!';
+  title = '¡¡¡Hello friend desde Angular!!';
   // saludo = 'Saludos desde Angular';
 }
