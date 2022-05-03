@@ -23,6 +23,7 @@ export class PersonasComponent{ //clase
     agregarPersona(){
         this.mensaje = 'Persona agregada';
     }
+    // el siguiente metodo es del event binding
     // modificarTitulo(event: Event){ // variable event de tipo Event
     //     console.log('Entrando a metodo modificar titulo');
     //     this.titulo= (<HTMLInputElement>event.target).value; //Para poder acceder a la variable event debo poner el target ya que hace referencia al

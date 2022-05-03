@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [ //atributo
     BrowserModule,
-    FormsModule //este modelo es para el two way binding, es modulo propio de Angular
+    FormsModule //este modelo es necesario para el two way binding, es modulo propio de Angular
 
   ],
   providers: [], //atributo
