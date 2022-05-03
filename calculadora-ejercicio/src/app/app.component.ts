@@ -6,11 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'calculadora-ejercicio';
+  title = 'Aplicación de Calculadora';
   resultado:number = 0;
   a:number = 0;
   b:number = 0;
-  sumar(){
+
+  sumar():void{ //no regresa nada por eso le mando el void
      this.resultado = this.a+this.b;
   }
 }
