@@ -5,7 +5,7 @@
       <button class="btn btn-primary" [disabled]="desabilitar"
       (click)="agregarPersona()">Agregar Persona</button> <!--En eventos En javascript se usa el onclick pero para angular se usa el (click) y se le asigna un metodo-->
       
-      <p>{{mensaje}}</p>
+      <p *ngIf="mostrar">{{mensaje}} con el título de {{titulo}}</p>
       <app-persona></app-persona>
 
       <label>Título Persona</label>
