@@ -8,4 +8,5 @@ con -t la plantilla html se genera igual de manera inline
 npm install bootstrap --save <== Comando para instalar bootstrap
 npm install jquery --save  <== comando para instalar jquery
 npm install popper.js --save  <== comando para instalar popper
+npm i bootstrap jquery popper.js --save  <== manera mas rapida de instalar bootstrap y jquery
 
