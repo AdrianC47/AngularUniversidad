@@ -5,7 +5,12 @@
       <button class="btn btn-primary" [disabled]="desabilitar"
       (click)="agregarPersona()">Agregar Persona</button> <!--En eventos En javascript se usa el onclick pero para angular se usa el (click) y se le asigna un metodo-->
       
-      <p *ngIf="mostrar">{{mensaje}} con el título de {{titulo}}</p>
+      <p *ngIf="mostrar; else sinPeople">{{mensaje}} con el título de {{titulo}}</p>
+      <ng-template #sinPeople><!--Aqui con esta estructura se hace el otro lado del if -->
+        <p>No se ha agregado ninguna persona!!</p>
+      </ng-template> 
+      
+
       <app-persona></app-persona>
 
       <label>Título Persona</label>

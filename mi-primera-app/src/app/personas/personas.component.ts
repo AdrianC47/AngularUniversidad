@@ -17,7 +17,7 @@ import { Component } from "@angular/core";
 })
 export class PersonasComponent{ //clase 
     desabilitar = false;
-    mensaje = 'No se ha agregado ninguna persona';
+    mensaje = 'Aqui va un mensaje';
     titulo ="Ingeniero en Ciencias de la Computación";
     mostrar = false;
    
