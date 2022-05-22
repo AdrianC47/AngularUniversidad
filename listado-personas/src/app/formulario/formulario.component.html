@@ -1,14 +1,23 @@
 <form class="row">
     <div class="form-group col-md-2" >
       <label for="nombre" class="visually-hidden">Nombre</label>
-      <input type="text" name="nombre" id="nombre" class ="form-control" placeholder="Ingrese el nombre" [(ngModel)]="nombreInput" > <!--Aplicamos two way binding-->
+      <input type="text" name="nombre" id="nombre" class ="form-control"
+       placeholder="Ingrese el nombre"  
+       #nombreInput > 
+      <!--Aplicamos two way binding [(ngModel)]="nombreInput" -->
     </div>
     <div class="form-group col-md-2">
       <label for="apellido" class="visually-hidden">Apellido</label>
-      <input type="text" name="apellido" id="apellido" class ="form-control" placeholder="Ingrese el apellido" [(ngModel)]="apellidoInput"> <!--Aplicamos two way binding-->
+      <input type="text" name="apellido" id="apellido" class ="form-control" 
+      placeholder="Ingrese el apellido"  
+      #apellidoInput 
+      >
+       <!--Aplicamos two way binding-- [(ngModel)]="apellidoInput" -->
     </div>
     <div class="col">
-      <button type="submit" class = "btn btn-primary" (click)="agregarPersona()">
+      <!--Aqui hago referencia a los inputs cuando mando los parametros en el metodo-->
+      <button type="submit" class = "btn btn-primary" (click)="agregarPersona(nombreInput,apellidoInput)"> 
+        
         Agregar
       </button>
     </div>
