@@ -10,8 +10,8 @@ export class FormularioComponent   {
  @Output() resultadoSuma = new EventEmitter<number>();
  
   
- a:number = 0;
- b:number = 0;
+ a:number;
+ b:number;
 
  sumar():void{ //no regresa nada por eso le mando el void
     //this.resultado = this.a+this.b;

@@ -4,6 +4,9 @@
   (resultadoSuma)="procesarResultado($event)"
   
   ></app-formulario>
-  <label>Resultado:{{resultado}} </label>
+  <app-resultado
+  [resultadoHijo]="resultadoPadre" 
+  ></app-resultado>
+
 </div>
 
