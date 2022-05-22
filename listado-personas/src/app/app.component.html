@@ -18,15 +18,15 @@
       </button>
     </div>
   </form>
+  <hr />
+  <!--El siguiente es el componente hijo, aqui voy a mandar desde el componente padre informacion al componente hijo  -->
+  <app-persona  
+    *ngFor="let personaElemento of personas; let i=index" 
+    [persona]="personaElemento"
+    [indice]="i"
+  >
+  </app-persona>
 </div>
 
-<div class="container">
-  <hr/>
-  <div class="row">
-    <div class="col">
-      <div *ngFor="let persona of personas; let i=index"> <!--Aqui la variable persona va a ir obteniendo valores a lo que itera en el arreglo personas-->
-        {{i+1}}: {{persona.nombre}} {{persona.apellido}}      
-      </div> 
-    </div>
-  </div>
-</div>
+
+ 
