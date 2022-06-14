@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
 import { LoggingService } from '../LoggingService.service';
+import { PersonasService } from '../personas.service';
 
 @Component({
   selector: 'app-formulario',
@@ -10,14 +11,14 @@ import { LoggingService } from '../LoggingService.service';
 })  
 export class FormularioComponent  {
 
-  @Output() personaCreada = new EventEmitter<Persona>(); //con esto  crearemos un evento que propagará el objeto Persona al componente padre app
+  // @Output() personaCreada = new EventEmitter<Persona>(); //con esto  crearemos un evento que propagará el objeto Persona al componente padre app
   //nombreInput:string = '';
   //apellidoInput:string = '';
 
   @ViewChild('nombreInput')nombreInputa: ElementRef; //el primero es nombre de la referencia local(en el html) y el segundo es el nombre del atributo
   @ViewChild('apellidoInput')apellidoInputa: ElementRef;
 
-  constructor(private loggingService:LoggingService){}//Concepto de inyeccion de dependencias a través del constructor
+  constructor(private loggingService:LoggingService, private personasService:PersonasService){}//Concepto de inyeccion de dependencias a través del constructor
 
 
   ngOnInit() {    
@@ -27,7 +28,8 @@ export class FormularioComponent  {
     agregarPersona( ){
     let persona1=new Persona(this.nombreInputa.nativeElement.value,this.apellidoInputa.nativeElement.value); // Esto es propio del view child (el native element)
     this.loggingService.enviarMensajeAConsola('Enviamos persona con nombre: ' +persona1.nombre+" apellido:" +persona1.apellido);//llamo al método de mi servicio
-    this.personaCreada.emit(persona1)//con el emit lo propagamos al padre
+    //this.personaCreada.emit(persona1)//con el emit lo propagamos al padre
+    this.personasService.agregarPersona(persona1);
   }
  
 

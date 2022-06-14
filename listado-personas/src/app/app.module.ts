@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { PersonaComponent } from './persona/persona.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { LoggingService } from './LoggingService.service';
+import { PersonasService } from './personas.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { LoggingService } from './LoggingService.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [LoggingService], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
+  providers: [LoggingService,PersonasService], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
   bootstrap: [AppComponent]
 })
 export class AppModule { }
