@@ -18,7 +18,14 @@ export class FormularioComponent  {
   @ViewChild('nombreInput')nombreInputa: ElementRef; //el primero es nombre de la referencia local(en el html) y el segundo es el nombre del atributo
   @ViewChild('apellidoInput')apellidoInputa: ElementRef;
 
-  constructor(private loggingService:LoggingService, private personasService:PersonasService){}//Concepto de inyeccion de dependencias a través del constructor
+  constructor(private loggingService:LoggingService, private personasService:PersonasService){//Concepto de inyeccion de dependencias a través del constructor
+      //Lo siguiente se lo hace con el fin de demostrar como me comunico por diferentes componentes por medio de un servicio
+      //en este caso seria entre el formulario componente y el persona componente
+        this.personasService.saludar.subscribe((parametroindice: number) => alert("El indice es: " +parametroindice));
+        //Subscribe() es un método en Angular que conecta el observer con eventos observable. 
+        //Siempre que se realiza algún cambio en estos observables, se ejecuta un código y observa los resultados o cambios mediante el método subscribe. 
+        //aqui nos suscribimos al servicio, en pocas palabras estamos escuchando si hay un  evento que se emite y alertando por cada vez que se pase
+  }
 
 
   ngOnInit() {    
