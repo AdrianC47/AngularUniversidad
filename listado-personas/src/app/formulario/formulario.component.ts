@@ -27,7 +27,7 @@ export class FormularioComponent  {
   // agregarPersona(nombreInput: HTMLInputElement,apellidoInput:HTMLInputElement){ esto es en el locale reference
     agregarPersona( ){
     let persona1=new Persona(this.nombreInputa.nativeElement.value,this.apellidoInputa.nativeElement.value); // Esto es propio del view child (el native element)
-    this.loggingService.enviarMensajeAConsola('Enviamos persona con nombre: ' +persona1.nombre+" apellido:" +persona1.apellido);//llamo al método de mi servicio
+    //this.loggingService.enviarMensajeAConsola('Enviamos persona con nombre: ' +persona1.nombre+" apellido:" +persona1.apellido);//llamo al método de mi servicio
     //this.personaCreada.emit(persona1)//con el emit lo propagamos al padre
     this.personasService.agregarPersona(persona1);
   }
