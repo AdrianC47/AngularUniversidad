@@ -1,24 +1,11 @@
-<form class="row">
-    <div class="form-group col-md-2" >
-      <label for="nombre" class="visually-hidden">Nombre</label>
-      <input type="text" name="nombre" id="nombre" class ="form-control"
-       placeholder="Ingrese el nombre"  
-       #nombreInput > 
-      <!--Aplicamos two way binding [(ngModel)]="nombreInput" -->
-    </div>
-    <div class="form-group col-md-2">
-      <label for="apellido" class="visually-hidden">Apellido</label>
-      <input type="text" name="apellido" id="apellido" class ="form-control" 
-      placeholder="Ingrese el apellido"  
-      #apellidoInput 
-      >
-       <!--Aplicamos two way binding-- [(ngModel)]="apellidoInput" -->
-    </div>
-    <div class="col">
+<form class="item">
+      <input type="text" name="nombre" id="nombre"  placeholder="Nombre" 
+      [(ngModel)]="nombreInput"> <!--Aplicamos two way binding-->
+       <!--#nombreInput   referencia local-->     
+      <input type="text" name="apellido" id="apellido" placeholder="Apellido"
+      [(ngModel)]="apellidoInput">  <!--Aplicamos two way binding--  -->
+      <!--#apellidoInput referencia local--> 
       <!--Aqui hago referencia a los inputs cuando mando los parametros en el metodo-->
       <!-- <button type="submit" class = "btn btn-primary" (click)="agregarPersona(nombreInput,apellidoInput)">  Esto es local Reference-->
-        <button type="submit" class = "btn btn-primary" (click)="agregarPersona( )"> 
-        Agregar
-      </button>
-    </div>
+        <button type="submit" (click)="agregarPersona( )"> +</button>
   </form>
