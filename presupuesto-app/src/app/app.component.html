@@ -1,4 +1,10 @@
-<app-cabecero> </app-cabecero>
+<!--Aqui se  hara herencia del componente  padre (app) a hijo (cabecero)-->
+<app-cabecero
+  [presupuestoTotal]="getPresupuestoTotal()"
+  [ingresoTotal]="getIngresoTotal()"
+  [egresoTotal]="getEgresoTotal()"
+  [porcentajeTotal]="getPorcentajeTotal()" >
+</app-cabecero>
 
 <app-formulario></app-formulario>
 
