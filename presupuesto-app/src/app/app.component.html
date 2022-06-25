@@ -6,7 +6,6 @@ y para poder recibir [presupuestoTotal] en el hijo pues se usa @Input
 -->
 
 <app-cabecero
- 
   [presupuestoTotal]="getPresupuestoTotal()"
   [ingresoTotal]="getIngresoTotal()"
   [egresoTotal]="getEgresoTotal()"
@@ -17,5 +16,7 @@ y para poder recibir [presupuestoTotal] en el hijo pues se usa @Input
 
 <div class="contenedor limpiarEstilos">
   <app-ingreso></app-ingreso>
-  <app-egreso></app-egreso>
+  <app-egreso
+    [ingresoTotal]="getIngresoTotal()"
+  ></app-egreso>
 </div>
