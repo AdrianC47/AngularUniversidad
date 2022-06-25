@@ -1,14 +1,17 @@
 <form>
     <div class="agregar">
         <div class="agregar_contenedor">
-            <select (change)="tipoOperacion($event)" class="agregar_tipo">
+            <select [ngClass]="{redfocus: tipo === 'egresoOperacion'}"  (change)="tipoOperacion($event)" class="agregar_tipo">
                 <option value="ingresoOperacion" selected>+</option>
                 <option value="egresoOperacion">-</option>
             </select>
-            <input type="text" class="agregar_descripcion" placeholder="Agregar Descripción" name="descripcionInput" [(ngModel)]="descripcionInput">
-            <input type="number" class="agregar_valor" placeholder="Valor" name="valorInput" [(ngModel)]="valorInput">
+            <!--Aqui pregunto si mi variable tipo es igual a egresoOperacio, si es verdadero se añade la clase
+            red focus(clase de la hoja de estilos) al componente input-->
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type ="text" class="agregar_descripcion" placeholder="Agregar Descripción" name="descripcionInput" [(ngModel)]="descripcionInput">
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type="number" class="agregar_valor" placeholder="Valor" name="valorInput" [(ngModel)]="valorInput">
             <button type="submit" class="agregar_btn" (click)="agregarValor()">
-                <i class="ion-ios-checkmark-outline"></i>
+                <!--En este caso del icono, no queremos que cambie el contorno sino el icono por eso se pone red -->
+                <i [ngClass]="{red: tipo === 'egresoOperacion'}"  class="ion-ios-checkmark-outline"></i>
             </button>
         </div>
     </div>
