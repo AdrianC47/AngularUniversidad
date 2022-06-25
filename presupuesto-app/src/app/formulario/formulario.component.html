@@ -1,4 +1,7 @@
-<form>
+<!-- para monitorear el evento submit lo haremos desde el elemento formulario-->
+<!--Se usa un selector #formulario la cual se asocia al ngForm que basicamente es el objeto(de angular) que 
+     hace referencia a nuestro formulario() -->
+<form (ngSubmit)="formulario.form.valid && agregarValor()" #formulario="ngForm"> <!--con esto ya se valida el formulario-->
     <div class="agregar">
         <div class="agregar_contenedor">
             <select [ngClass]="{redfocus: tipo === 'egresoOperacion'}"  (change)="tipoOperacion($event)" class="agregar_tipo">
@@ -7,9 +10,9 @@
             </select>
             <!--Aqui pregunto si mi variable tipo es igual a egresoOperacio, si es verdadero se añade la clase
             red focus(clase de la hoja de estilos) al componente input-->
-            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type ="text" class="agregar_descripcion" placeholder="Agregar Descripción" name="descripcionInput" [(ngModel)]="descripcionInput">
-            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type="number" class="agregar_valor" placeholder="Valor" name="valorInput" [(ngModel)]="valorInput">
-            <button type="submit" class="agregar_btn" (click)="agregarValor()">
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type ="text" class="agregar_descripcion" placeholder="Agregar Descripción" name="descripcionInput" [(ngModel)]="descripcionInput" required>
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}" type="number" class="agregar_valor" placeholder="Valor" name="valorInput" [(ngModel)]="valorInput" required>
+            <button type="submit" class="agregar_btn"  >
                 <!--En este caso del icono, no queremos que cambie el contorno sino el icono por eso se pone red -->
                 <i [ngClass]="{red: tipo === 'egresoOperacion'}"  class="ion-ios-checkmark-outline"></i>
             </button>
