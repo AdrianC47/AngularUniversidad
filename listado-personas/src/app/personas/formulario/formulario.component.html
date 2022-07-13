@@ -1,11 +1,14 @@
-<form class="item">
-      <input type="text" name="nombre" id="nombre"  placeholder="Nombre" 
+<div class="box">
+<form class="item" #f="ngForm" (ngSubmit)="f.form.valid && onGuardarPersona()"> <!--La diferencia con el agregarPersona es que el guardar se usara tanto para modificar o guardar-->
+      <input type="text" name="nombre" id="nombre"  placeholder="Nombre" required 
       [(ngModel)]="nombreInput"> <!--Aplicamos two way binding-->
        <!--#nombreInput   referencia local-->     
-      <input type="text" name="apellido" id="apellido" placeholder="Apellido"
+      <input type="text" name="apellido" id="apellido" placeholder="Apellido" required
       [(ngModel)]="apellidoInput">  <!--Aplicamos two way binding--  -->
       <!--#apellidoInput referencia local--> 
       <!--Aqui hago referencia a los inputs cuando mando los parametros en el metodo-->
       <!-- <button type="submit" class = "btn btn-primary" (click)="agregarPersona(nombreInput,apellidoInput)">  Esto es local Reference-->
-        <button type="submit" (click)="agregarPersona( )"> +</button>
+        <!-- <button type="submit" (click)="agregarPersona( )"> +</button> -->
+        <button type="submit" style="cursor: pointer">+</button>
   </form>
+</div>
