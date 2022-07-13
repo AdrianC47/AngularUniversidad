@@ -9,10 +9,13 @@
     >
     </app-persona>
   </div>
+  <!--
   <div class="box">
-    <!--Por medio de la notacion en el formulario.ts del @Output , se está 
-    escuchando y el padre recibe el evento-->
+    Por medio de la notacion en el formulario.ts del @Output , se está 
+    escuchando y el padre recibe el evento
     <app-formulario></app-formulario>
     <hr />
-    <!--El siguiente es el componente hijo, aqui voy a mandar desde el componente padre informacion al componente hijo  -->
-  </div>
+    El siguiente es el componente hijo, aqui voy a mandar desde el componente padre informacion al componente hijo  
+  </div>-->
+  <router-outlet></router-outlet> <!--este componente lo que hara es mostrar la info de los componentes hijos especificados
+  en el routing-->

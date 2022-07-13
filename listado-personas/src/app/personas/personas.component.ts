@@ -19,7 +19,7 @@ export class PersonasComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.personas = this.personasService.personas;//igualamos el arreglo del atrbituo vacion con el del servicio
+    this.personas = this.personasService.personas;//igualamos el arreglo del atributo vacio con el del servicio
   }
 
   agregar(){

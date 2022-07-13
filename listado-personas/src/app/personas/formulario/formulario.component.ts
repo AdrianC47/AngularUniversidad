@@ -34,8 +34,8 @@ export class FormularioComponent implements OnInit {
   ngOnInit() {
     //El Activated Route es para obtener los parametros mandados
     this.index = this.route.snapshot.params['id'];//el nombre id es y debe ser el mismo que se define en las url
-    this.modoEdicion= +this.route.snapshot.params['modoEdicion']; //el + antes es para convertir a entero el parametro en string
-    if (this.modoEdicion!=null && this.modoEdicion === 2) {
+    this.modoEdicion= +this.route.snapshot.queryParams['modoEdicion']; //el + antes es para convertir a entero el parametro en string
+    if (this.modoEdicion!=null && this.modoEdicion === 1) {
       let persona: Persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
@@ -67,8 +67,8 @@ export class FormularioComponent implements OnInit {
   eliminarPersona(){
     if(this.index!=null){
       this.personasService.eliminarPersona(this.index);
-      this.router.navigate(['personas']);
     }
+    this.router.navigate(['personas']);
   }
 
 
