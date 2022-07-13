@@ -16,7 +16,7 @@ export class FormularioComponent implements OnInit {
   nombreInput: string = '';
   apellidoInput: string = '';
   index: number;
-
+  modoEdicion:number;
   //@ViewChild('nombreInput')nombreInputa: ElementRef; //el primero es nombre de la referencia local(en el html) y el segundo es el nombre del atributo
   //@ViewChild('apellidoInput')apellidoInputa: ElementRef;
 
@@ -34,7 +34,8 @@ export class FormularioComponent implements OnInit {
   ngOnInit() {
     //El Activated Route es para obtener los parametros mandados
     this.index = this.route.snapshot.params['id'];//el nombre id es y debe ser el mismo que se define en las url
-    if (this.index) {
+    this.modoEdicion= +this.route.snapshot.params['modoEdicion']; //el + antes es para convertir a entero el parametro en string
+    if (this.modoEdicion!=null && this.modoEdicion === 2) {
       let persona: Persona = this.personasService.encontrarPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
@@ -51,7 +52,7 @@ export class FormularioComponent implements OnInit {
 
   onGuardarPersona() {
     let persona1 = new Persona(this.nombreInput, this.apellidoInput);
-    if(this.index!=null){
+    if(this.modoEdicion!= null && this.modoEdicion ===1){
       //actualizar  
       this.personasService.modificarPersona(this.index,persona1);
     }else{

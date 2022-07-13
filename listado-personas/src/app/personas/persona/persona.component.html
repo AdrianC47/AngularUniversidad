@@ -1,7 +1,10 @@
 <div class="item">
   <ul>
-    <li>
-    <a [routerLink]="['/personas',indice]"><!--routerLink es propio de angular y similar al  href-->
+    <li><!--routerLink es propio de angular y similar al  href, 
+    en el queryParams el modoEdicion es 1 si estamos editando y 0 si vamos a agregar -->
+    <a [routerLink]="['/personas',indice]"
+      [queryParams]="{modoEdicion:'1'}" 
+    >
       {{persona.nombre}} {{persona.apellido}}
     </a>
   </li> 
