@@ -10,5 +10,7 @@
       <!-- <button type="submit" class = "btn btn-primary" (click)="agregarPersona(nombreInput,apellidoInput)">  Esto es local Reference-->
         <!-- <button type="submit" (click)="agregarPersona( )"> +</button> -->
         <button type="submit" style="cursor: pointer">+</button>
+        <button *ngIf="index!=null" type="submit" style="cursor: pointer" class="buttonRed" (click)="eliminarPersona()">-</button>
+        <!--el ngIf es como un if y se lo usa en este caso para saber si se esta en modo edicion caso contrario no se muestra-->
   </form>
 </div>

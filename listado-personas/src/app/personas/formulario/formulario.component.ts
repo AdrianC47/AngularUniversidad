@@ -51,15 +51,23 @@ export class FormularioComponent implements OnInit {
 
   onGuardarPersona() {
     let persona1 = new Persona(this.nombreInput, this.apellidoInput);
-    if(this.index!= null){
+    if(this.index!=null){
       //actualizar  
       this.personasService.modificarPersona(this.index,persona1);
     }else{
      //crear
+     this.personasService.agregarPersona(persona1);
     }
-    this.personasService.agregarPersona(persona1);
+
     //Una vez agregada una persona se redirecciona al listado de personas
     this.router.navigate(['personas']);
+  }
+
+  eliminarPersona(){
+    if(this.index!=null){
+      this.personasService.eliminarPersona(this.index);
+      this.router.navigate(['personas']);
+    }
   }
 
 
