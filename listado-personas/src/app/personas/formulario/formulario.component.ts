@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../persona.model';
 import { LoggingService } from '../../LoggingService.service';
 import { PersonasService } from '../../personas.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -10,16 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario.component.css'],
   //providers: [LoggingService] //se añade un proveedor para poder usar un servicio
 })
-export class FormularioComponent implements OnInit{
+export class FormularioComponent implements OnInit {
 
   // @Output() personaCreada = new EventEmitter<Persona>(); //con esto  crearemos un evento que propagará el objeto Persona al componente padre app
   nombreInput: string = '';
   apellidoInput: string = '';
+  index: number;
 
   //@ViewChild('nombreInput')nombreInputa: ElementRef; //el primero es nombre de la referencia local(en el html) y el segundo es el nombre del atributo
   //@ViewChild('apellidoInput')apellidoInputa: ElementRef;
 
-  constructor(private loggingService: LoggingService, private personasService: PersonasService, private router: Router) {//Concepto de inyeccion de dependencias a través del constructor
+  constructor(private loggingService: LoggingService, private personasService: PersonasService,
+    private router: Router, private route: ActivatedRoute) {//Concepto de inyeccion de dependencias a través del constructor
     //Lo siguiente se lo hace con el fin de demostrar como me comunico por diferentes componentes por medio de un servicio
     //en este caso seria entre el formulario componente y el persona componente
     this.personasService.saludar.subscribe((parametroindice: number) => alert("El indice es: " + parametroindice));
@@ -30,6 +32,13 @@ export class FormularioComponent implements OnInit{
 
 
   ngOnInit() {
+    //El Activated Route es para obtener los parametros mandados
+    this.index = this.route.snapshot.params['id'];//el nombre id es y debe ser el mismo que se define en las url
+    if (this.index) {
+      let persona: Persona = this.personasService.encontrarPersona(this.index);
+      this.nombreInput = persona.nombre;
+      this.apellidoInput = persona.apellido;
+    }
   }
 
   // agregarPersona(nombreInput: HTMLInputElement,apellidoInput:HTMLInputElement){ esto es en el locale reference
@@ -40,8 +49,14 @@ export class FormularioComponent implements OnInit{
   //   this.personasService.agregarPersona(persona1);
   // }
 
-  onGuardarPersona(){
-    let persona1 = new Persona(this.nombreInput,this.apellidoInput);
+  onGuardarPersona() {
+    let persona1 = new Persona(this.nombreInput, this.apellidoInput);
+    if(this.index!= null){
+      //actualizar  
+      this.personasService.modificarPersona(this.index,persona1);
+    }else{
+     //crear
+    }
     this.personasService.agregarPersona(persona1);
     //Una vez agregada una persona se redirecciona al listado de personas
     this.router.navigate(['personas']);

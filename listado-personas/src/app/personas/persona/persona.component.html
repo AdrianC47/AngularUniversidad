@@ -1,4 +1,11 @@
 <div class="item">
-  <input type="checkbox" (click)="emitirSaludo()" />
-  <p>{{ indice + 1 }}: {{ persona.nombre }} {{ persona.apellido }}</p>
+  <ul>
+    <li>
+    <a [routerLink]="['/personas',indice]"><!--routerLink es propio de angular y similar al  href-->
+      {{persona.nombre}} {{persona.apellido}}
+    </a>
+  </li> 
+  </ul>
+  <!-- <input type="checkbox" (click)="emitirSaludo()" />
+  <p>{{ indice + 1 }}: {{ persona.nombre }} {{ persona.apellido }}</p> -->
 </div>

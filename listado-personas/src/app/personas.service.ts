@@ -20,4 +20,17 @@ export class PersonasService {
         this.personas.push(persona);
     }
 
+    encontrarPersona(index: number) {
+        let persona: Persona = this.personas[index];
+        return persona;
+
+    }
+    
+    modificarPersona(index:number, persona:Persona){
+        //busco a la persona en este caso por el index y luego la reemplazo con el objeto que recibo
+        let persona1:Persona=this.personas[index];
+        persona1.nombre=persona.nombre;
+        persona1.apellido=persona.apellido;
+        
+    }
 }
