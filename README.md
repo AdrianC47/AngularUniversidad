@@ -11,4 +11,5 @@ npm install jquery --save  <== comando para instalar jquery
 npm install popper.js --save  <== comando para instalar popper
 npm i bootstrap jquery popper.js --save  <== manera mas rapida de instalar bootstrap y jquery
 Si no se tiene la carpeta node modules se instala con <== npm install
+Generar un nuevo modulo routing <== ng g module app-routing
 
