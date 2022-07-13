@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PersonasComponent } from './personas/personas.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
+import { ErrorComponent } from './error/error.component';
 
 
 //declaro la variable
@@ -11,7 +12,8 @@ const routes: Routes = [
       { path: 'agregar', component: FormularioComponent },
       { path: ':id', component: FormularioComponent }, //caso de uso para editar una persona
     ]
-  }
+  },
+  { path: '**', component: ErrorComponent},//OJO que el path para los errores debe ser siempre al ultimo ya que si se pone antes las demás no seran localizadas
 ]
 @NgModule({
   // declarations: [], se quitan las declaraciones y se dejan los imports
