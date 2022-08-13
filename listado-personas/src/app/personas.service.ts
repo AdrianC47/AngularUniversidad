@@ -5,19 +5,29 @@ import { DataServices } from './data.service';
 
 @Injectable() //esta anotacion se usa para indicar que voy a inyectar un servicio dentro de otro
 export class PersonasService {
-    personas: Persona[] = [
-        new Persona("Adrian", "Cabrera"),
-        new Persona("Fernando", "Herrera"),
-        new Persona("Vladimir", "Robles")
-    ];
+    personas: Persona[] = [];
+    // personas: Persona[] = [
+    //     new Persona("Adrian", "Cabrera"),
+    //     new Persona("Fernando", "Herrera"),
+    //     new Persona("Vladimir", "Robles")
+    // ];
     //esto es un atrbito
     saludar = new EventEmitter<number>();//definimos una variable que va a ser el event emitter y lo que va a emitir es un number
 
-    constructor(private ServicioLogin: LoggingService, private dataService :DataServices) {
+    constructor(private ServicioLogin: LoggingService, private dataService :DataServices) { }
 
+
+    setPersonas(personas: Persona[]){
+        this.personas=personas;
+    }
+    obtenerPersonas(){
+        return this.dataService.cargarPersonas();
     }
     agregarPersona(persona: Persona) {
         this.ServicioLogin.enviarMensajeAConsola("Agregamos persona " + persona.nombre);
+        if (this.personas == null ){
+            this.personas = [];
+        }
         this.personas.push(persona);
         this.dataService.guardarPersonas(this.personas);
     }

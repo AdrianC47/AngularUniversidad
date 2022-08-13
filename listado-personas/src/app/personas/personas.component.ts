@@ -13,16 +13,21 @@ export class PersonasComponent implements OnInit {
 
   personas: Persona[] = [];
 
-  constructor(private loggingService: LoggingService,private personasService: PersonasService,
-    private router:Router){
-
-   }
+  constructor(private loggingService: LoggingService, private personasService: PersonasService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.personas = this.personasService.personas;//igualamos el arreglo del atributo vacio con el del servicio
+    //this.personas = this.personasService.personas;//igualamos el arreglo del atributo vacio con el del servicio
+    this.personasService.obtenerPersonas()
+      .subscribe(
+        (personas: Persona[]) => {
+          this.personas = personas;
+          this.personasService.setPersonas(personas);
+        }
+      );
   }
 
-  agregar(){
+  agregar() {
     //para navegar a otro componente usamos la clase router, la cual es un servicio
     this.router.navigate(["personas/agregar"])
   }
