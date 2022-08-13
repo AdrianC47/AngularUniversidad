@@ -9,6 +9,8 @@ import { LoggingService } from './LoggingService.service';
 import { PersonasService } from './personas.service';
 import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './error/error.component';
+import { DataServices } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,9 +24,10 @@ import { ErrorComponent } from './error/error.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule//modulo para las rutas
+    AppRoutingModule,//modulo para las rutas
+    HttpClientModule
   ],
-  providers: [LoggingService,PersonasService], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
+  providers: [LoggingService,PersonasService, DataServices], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
   bootstrap: [AppComponent]
 })
 export class AppModule { }
