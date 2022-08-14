@@ -1,33 +1,43 @@
-import  {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Persona } from './persona.model';
 @Injectable()
-export class DataServices{
- //Este servicio se encargará de establecer la comunicación con la base de datos 
- //pero lo hará a partir de la inyección de otro servicio el cual es el  httpClient
- constructor(private httpClient: HttpClient){}
- 
+export class DataServices {
+    //Este servicio se encargará de establecer la comunicación con la base de datos 
+    //pero lo hará a partir de la inyección de otro servicio el cual es el  httpClient
+    constructor(private httpClient: HttpClient) { }
+
     //Cargar Personas
-    cargarPersonas():Observable<any>{
+    cargarPersonas(): Observable<any> {
         return this.httpClient.get('https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos.json')
     }
     //Guardar personas
-    guardarPersonas(personas: Persona[]){//con el metodo put lo que hago es reemplazar los datos para que no se guarden cada vez los mismos por cada peticion POST
-        this.httpClient.put('https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos.json',personas)
-        .subscribe(
-            response => console.log("resultado guardar Personas" + response),
-            error => console.log("Error al guardar Personas:" +error)
-        );    
-    } 
-    
-    modificarPersona(index: number, persona:Persona){
-        let url : string;
-        url ='https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' +index+ '.json';
+    guardarPersonas(personas: Persona[]) {//con el metodo put lo que hago es reemplazar los datos para que no se guarden cada vez los mismos por cada peticion POST
+        this.httpClient.put('https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos.json', personas)
+            .subscribe(
+                response => console.log("resultado guardar Personas" + response),
+                error => console.log("Error al guardar Personas:" + error)
+            );
+    }
+
+    modificarPersona(index: number, persona: Persona) {
+        let url: string;
+        url = 'https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' + index + '.json';
         this.httpClient.put(url, persona)
-        .subscribe(
-            response => console.log("resultado de modificar el objeto persona " +persona)
-        ,    error => console.log("Error  en modificar Persona: " +persona)
-        ) 
+            .subscribe(
+                response => console.log("resultado de modificar el objeto persona " + response)
+                , error => console.log("Error  en modificar Persona: " + error)
+            )
+    }
+
+    eliminarPersona(index: number) {
+        let url: string;
+        url = 'https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' + index + '.json';
+        this.httpClient.delete(url)
+            .subscribe(
+                response => console.log("resultado de eliminar el objeto persona " + response)
+                , error => console.log("Error  en eliminar Persona: " + error)
+            )
     }
 }

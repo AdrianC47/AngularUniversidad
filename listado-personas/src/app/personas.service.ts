@@ -49,5 +49,15 @@ export class PersonasService {
 
     eliminarPersona(index:number){
         this.personas.splice(index,1)    //el splice es para borrar
+        this.dataService.eliminarPersona(index)
+        // se vuelve a guardar el arreglo para regenerar los indices ya que en este caso el modelado no se esta trabajando con
+        // identificadores unicos
+        this.modificarPersonas();
     }    
+
+    modificarPersonas(){
+        if(this.personas != null){
+            this.dataService.guardarPersonas(this.personas)
+        }
+    }
 }
