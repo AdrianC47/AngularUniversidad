@@ -12,4 +12,7 @@ npm install popper.js --save  <== comando para instalar popper
 npm i bootstrap jquery popper.js --save  <== manera mas rapida de instalar bootstrap y jquery
 Si no se tiene la carpeta node modules se instala con <== npm install
 Generar un nuevo modulo routing <== ng g module app-routing
+Para compilar la applicacion para desplegarla en  produccion (generar dist) se usa <= ng build --prod --aot Ojo que esto esta pensado
+si es que se publica nuestra aplicación a nivel raíz del servidor, sin embargo si la aplicación se requiere publicar
+dentro de una carpeta se usa ng build --prod --aot --base-href /nombreCarpeta/
 
