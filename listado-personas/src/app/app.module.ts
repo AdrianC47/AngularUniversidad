@@ -11,6 +11,7 @@ import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './error/error.component';
 import { DataServices } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormularioComponent,
     PersonasComponent,
     ErrorComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
