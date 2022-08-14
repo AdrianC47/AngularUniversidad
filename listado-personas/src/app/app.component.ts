@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth'
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   // personas: Persona[] = [];
 
   // constructor(private loggingService: LoggingService,private personasService: PersonasService){}
-  constructor(){}
+  constructor(private loginService:LoginService){}
 
   ngOnInit(): void {
     // this.personas = this.personasService.personas;//igualamos el arreglo del atrbituo vacion con el del servicio
@@ -25,7 +26,11 @@ export class AppComponent implements OnInit {
     })
   }
 
- 
-
+  isAutenticado(){
+   return this.loginService.isAutenticado();
+  }
+  salir(){
+      this.loginService.logout();
+  }
 }
 
