@@ -12,7 +12,16 @@ import { ErrorComponent } from './error/error.component';
 import { DataServices } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+// import firebase from 'firebase/compat/app';
+// import 'firebase/compat/auth'
 
+// firebase.initializeApp({
+//   apiKey: "AIzaSyBDZ-Ar9SKkR6pc7jC8u6Hm2PVhFkbvEXc",
+//   authDomain: "listado-personas-e29d2.firebaseapp.com",
+// })
+
+ 
 
 @NgModule({
   declarations: [
@@ -29,7 +38,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,//modulo para las rutas
     HttpClientModule
   ],
-  providers: [LoggingService,PersonasService, DataServices], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
+  providers: [LoggingService,PersonasService, DataServices, LoginService], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
   bootstrap: [AppComponent]
 })
 export class AppModule { }
