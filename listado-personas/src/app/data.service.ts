@@ -16,7 +16,8 @@ export class DataServices {
     }
     //Guardar personas
     guardarPersonas(personas: Persona[]) {//con el metodo put lo que hago es reemplazar los datos para que no se guarden cada vez los mismos por cada peticion POST
-        this.httpClient.put('https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos.json', personas)
+        const token =  this.loginService.getIdToken();
+        this.httpClient.put('https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos.json?auth='+token, personas)
             .subscribe(
                 response => console.log("resultado guardar Personas" + response),
                 error => console.log("Error al guardar Personas:" + error)
@@ -24,8 +25,9 @@ export class DataServices {
     }
 
     modificarPersona(index: number, persona: Persona) {
+        const token =  this.loginService.getIdToken();
         let url: string;
-        url = 'https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' + index + '.json';
+        url = 'https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' + index + '.json?auth='+token;
         this.httpClient.put(url, persona)
             .subscribe(
                 response => console.log("resultado de modificar el objeto persona " + response)
@@ -34,8 +36,9 @@ export class DataServices {
     }
 
     eliminarPersona(index: number) {
+        const token =  this.loginService.getIdToken();
         let url: string;
-        url = 'https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' + index + '.json';
+        url = 'https://listado-personas-e29d2-default-rtdb.firebaseio.com/datos/' + index + '.json?auth='+token;
         this.httpClient.delete(url)
             .subscribe(
                 response => console.log("resultado de eliminar el objeto persona " + response)
