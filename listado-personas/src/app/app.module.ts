@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 // import firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth'
+import { LoginGuardian } from './login/login-guardian.service';
 
 // firebase.initializeApp({
 //   apiKey: "AIzaSyBDZ-Ar9SKkR6pc7jC8u6Hm2PVhFkbvEXc",
@@ -38,7 +39,7 @@ import { LoginService } from './login/login.service';
     AppRoutingModule,//modulo para las rutas
     HttpClientModule
   ],
-  providers: [LoggingService,PersonasService, DataServices, LoginService], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
+  providers: [LoggingService,PersonasService, DataServices, LoginService, LoginGuardian], // se añade aqui mi proveedor de mi servicio para no estar añadiendo en cada clase
   bootstrap: [AppComponent]
 })
 export class AppModule { }
