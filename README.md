@@ -16,3 +16,4 @@ Para compilar la applicacion para desplegarla en  produccion (generar dist) se u
 si es que se publica nuestra aplicación a nivel raíz del servidor, sin embargo si la aplicación se requiere publicar
 dentro de una carpeta se usa ng build --prod --aot --base-href /nombreCarpeta/
 
+npm install -g firebase-tools <== Para agregar nuestro sitio en el alojamiento de firebase
