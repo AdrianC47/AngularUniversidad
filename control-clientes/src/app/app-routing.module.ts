@@ -8,12 +8,12 @@ import { EditarClienteComponent } from './componentes/editar-cliente/editar-clie
 import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
 
 const routes: Routes = [
-  {path: '', component: TableroComponent},
-  {path: 'login', component:LoginComponent},
-  {path: 'registrarse', component:RegistroComponent},
-  {path:'configuracion', component:ConfiguracionComponent},
-  {path: 'cliente/editar/:id', component:EditarClienteComponent},
-  {path: '**', component: NoEncontradoComponent},
+   {path: '', component: TableroComponent},
+   {path: 'login', component:LoginComponent},
+   {path: 'registrarse', component:RegistroComponent},
+   {path:'configuracion', component:ConfiguracionComponent},
+   {path: 'cliente/editar/:id', component:EditarClienteComponent},
+   {path: '**', component: NoEncontradoComponent},
 ];
 
 @NgModule({
