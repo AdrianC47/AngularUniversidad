@@ -9,15 +9,28 @@ import { ClienteServicio } from 'src/app/servicios/cliente.service';
 })
 export class ClientesComponent implements OnInit {
 
-  clientes : Cliente[];
+  clientes: Cliente[];
   constructor(private clientesServicio: ClienteServicio) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.clientesServicio.getClientes().subscribe(
       clientes => {
-         this.clientes=clientes;
+        this.clientes = clientes;
       }
     )
   }
+
+  getSaldoTotal() {
+    let saldoTotal: number = 0;
+    if (this.clientes) {
+      this.clientes.forEach(cliente => {
+         
+        saldoTotal += cliente.saldo!;
+ 
+      })
+    }
+    return saldoTotal;
+  }
+
 
 }
