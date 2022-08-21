@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div  class="col-md-3">
-        <a href="#"   class="btn btn-primary btn-block"  data-bs-toggle="modal" data-bs-target="#agregarClienteModal"  >
+        <a href="#"   class="btn btn-primary btn-block"    (click)="triggerModal(agregarClienteModal)" >
           <i class="fas fa-plus"></i>Agregar Cliente
         </a>
       </div>
@@ -20,8 +20,8 @@
           <div class="card-header">
             <h4>Listado de Clientes</h4>
           </div>
-          <table class="table table-striped">
-            <thead class="thead-dark">
+          <table class="table">
+            <thead class="table-dark">
               <tr>
                 <th>#</th>
                 <th>Nombre</th>
@@ -61,7 +61,7 @@
           <div class="card-body">
             <h3>Total Clientes</h3>
             <h4 class="display-4">
-              <!-- <i class="fas fa-users"></i> {{ clientes?.length }} -->
+              <i class="fas fa-users"></i> {{ clientes?.length }}
             </h4>
           </div>
         </div>
@@ -74,49 +74,45 @@
 
 
 <!--Agregar cliente modal-->
-<div class="modal fade" id="agregarClienteModal"  >
-  <div class="modal-dialog modl-lg">
-    <div class="modal-content">
-          <div class="modal-header bg-info text-white">
-              <h5 class="modal-title">Agregar Cliente</h5>
-              <button class="close" data-bs-dismiss="modal">
-              <span>&times;</span>
-              </button>
-          </div>  
-          <form>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="saldo">Saldo</label>
-                <input type="number" name="saldo" class="form-control">
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-          </form>
- 
+<!-- <div class="modal fade" id="agregarClienteModal"  > -->
+<ng-template #agregarClienteModal let-modal>
+  
+  <div class="modal-content">
+    <div class="modal-header bg-info text-white">
+        <h5 class="modal-title">Agregar Cliente</h5>
+        <button class="close" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span>&times;</span>
+        </button>
+    </div>  
+    <form>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" name="nombre" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" name="apellido" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="saldo">Saldo</label>
+          <input type="number" name="saldo" class="form-control">
+        </div>
       </div>
-  </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+
 </div>
+          
+</ng-template>
  
  
-<script>
-  var myModal = new bootstrap.Modal(document.getElementById("agregarClienteModal"), {});
-document.onclick = function () {
-  myModal.show();
-};
-</script>
+ 
  
