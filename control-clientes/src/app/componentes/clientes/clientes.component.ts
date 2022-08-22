@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Cliente } from 'src/app/modelo/cliente.model';
 import { ClienteServicio } from 'src/app/servicios/cliente.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -17,7 +18,12 @@ export class ClientesComponent implements OnInit {
     email:'',
     saldo:0
   }
-  constructor(private clientesServicio: ClienteServicio,private modalService: NgbModal, private flashMessages: FlashMessagesService) { }
+
+  @ViewChild("clienteForm") clienteForm: NgForm; //por medio de ViewChild lo que haremos es reiniciar/limpiar nuestro formulario
+
+  @ViewChild("botonCerrar") botonCerrar: ElementRef; //de igual forma por medio de ViewChild lo que haremos es que se cierre el modal una vez se haya guardado el cliente
+
+    constructor(private clientesServicio: ClienteServicio,private modalService: NgbModal, private flashMessages: FlashMessagesService) { }
 
   ngOnInit(): void {  
     this.clientesServicio.getClientes().subscribe(
@@ -57,13 +63,23 @@ export class ClientesComponent implements OnInit {
   agregar({value, valid}: {value:Cliente, valid:boolean}){
     if(!valid){
       this.flashMessages.show("Por favor llena el formulario correctamente", {
-        cssClass: 'alert-danger', timeout: 4000
+        cssClass: 'alert-dangersaldo', timeout: 4000
       });
     }
     else{
       //Agregar el nuevo cliente
-      
+        this.clientesServicio.agregarCliente(value);
+        var resetForm = <HTMLFormElement>document.getElementById('#formulario');
+        resetForm.reset();
+         this.cerrarModal();
+
     }
+  }
+
+  private cerrarModal(){
+    var boton =<HTMLFormElement>document.getElementById('#botonCerrar');
+    boton.click();
+     
   }
 
 

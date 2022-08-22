@@ -80,12 +80,12 @@
   <div class="modal-content">
     <div class="modal-header bg-info text-white">
         <h5 class="modal-title">Agregar Cliente</h5>
-        <button class="close" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <button class="close" id='#botonCerrar' type="button" class="close" data-bs-dismiss="modal" #botonCerrar aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span>&times;</span>
         </button>
     </div>  
     <flash-messages></flash-messages>
-    <form #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)"> 
+    <form  id="#formulario" #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)"> 
       <div class="modal-body">
         <div class="form-group">
           <label for="nombre">Nombre</label>
