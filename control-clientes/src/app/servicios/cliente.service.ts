@@ -8,12 +8,12 @@ import {map} from 'rxjs/operators'
 export class ClienteServicio{
     clientesColeccion: AngularFirestoreCollection<Cliente>; //definimos un tipo para la coleccion que en este caso es Cliente
     clienteDoc: AngularFirestoreDocument<Cliente>;
-    //Los metodos nos retornaran de la misma forma colleciones pero de tipo Observable por ende tendremos que subscribirnos a las colecciones
+    //Los metodos nos retornaran de la misma forma coleciones pero de tipo Observable por ende tendremos que subscribirnos a las colecciones
     clientes: Observable<Cliente[]>;
     cliente: Observable<Cliente>;
 
     constructor(private db:AngularFirestore){
-        this.clientesColeccion=db.collection('clientes', ref=> ref.orderBy('nombre', 'asc'));//recuperamos de nuestra bd de firestore la coleccion de clietnes, ademas indicamos el orden
+        this.clientesColeccion=db.collection('clientes', ref=> ref.orderBy('nombre', 'asc'));//recuperamos de nuestra bd de firestore la coleccion de clientes, ademas indicamos el orden
     }
 
     getClientes(): Observable<Cliente[]>{
@@ -31,6 +31,23 @@ export class ClienteServicio{
 
     agregarCliente(cliente: Cliente){
         this.clientesColeccion.add(cliente);
+    }
+
+    getCliente(id:string){
+        this.clienteDoc =this.db.doc<Cliente>(`clientes/${id}`);
+        this.cliente=this.clienteDoc.snapshotChanges().pipe(
+            map( accion=> {
+                if(accion.payload.exists === false){
+                    return null;
+                }
+                else{
+                    const datos= accion.payload.data() as Cliente;
+                    datos.id= accion.payload.id;
+                    return datos;
+                }
+            })
+        );
+        return this.cliente;
     }
 
 }
