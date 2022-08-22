@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/modelo/cliente.model';
 import { ClienteServicio } from 'src/app/servicios/cliente.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -10,7 +11,13 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class ClientesComponent implements OnInit {
   closeModal: string;
   clientes: Cliente[];
-  constructor(private clientesServicio: ClienteServicio,private modalService: NgbModal) { }
+  cliente: Cliente={
+    nombre:"",
+    apellido:'',
+    email:'',
+    saldo:0
+  }
+  constructor(private clientesServicio: ClienteServicio,private modalService: NgbModal, private flashMessages: FlashMessagesService) { }
 
   ngOnInit(): void {  
     this.clientesServicio.getClientes().subscribe(
@@ -46,6 +53,17 @@ export class ClientesComponent implements OnInit {
       })
     }
     return saldoTotal;
+  }
+  agregar({value, valid}: {value:Cliente, valid:boolean}){
+    if(!valid){
+      this.flashMessages.show("Por favor llena el formulario correctamente", {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+    }
+    else{
+      //Agregar el nuevo cliente
+      
+    }
   }
 
 
