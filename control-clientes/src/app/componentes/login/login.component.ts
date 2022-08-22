@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private  router:Router, private flashMessages: FlashMessagesModule) { }
 
   ngOnInit(): void {
   }
