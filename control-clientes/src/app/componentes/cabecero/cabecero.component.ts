@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/servicios/login.service';
+import { ConfiguracionServicio } from '../../servicios/configuracion.service';
 
 @Component({
   selector: 'app-cabecero',
@@ -10,10 +11,10 @@ import { LoginService } from 'src/app/servicios/login.service';
 export class CabeceroComponent implements OnInit {
   isLoggedIn: boolean;//variable para saber si el usuario ya está logeado
   loggedInUser:  string;//variable (email) para saber cual es el usuario que está logeado
-  
+  permitirRegistro:boolean;
   mostrarREsponsive_menu = false;
   
-  constructor(private logginService:LoginService,private router: Router) { }
+  constructor(private logginService:LoginService,private router: Router, private ConfiguracionServicio:ConfiguracionServicio) { }
 
   ngOnInit(): void {
     this.logginService.getAuth().subscribe(auth => {
@@ -23,6 +24,9 @@ export class CabeceroComponent implements OnInit {
       } else{
         this.isLoggedIn=false;
       }
+    })
+    this.ConfiguracionServicio.getConfiguracion().subscribe(configuracion=>{
+      this.permitirRegistro=configuracion.permitirRegistro;
     })
   }
 
