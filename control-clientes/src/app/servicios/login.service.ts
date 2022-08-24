@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-
+import {map} from 'rxjs/operators';
 @Injectable()
 export class LoginService{
     constructor(private authService: AngularFireAuth){}
@@ -11,5 +11,15 @@ export class LoginService{
                 error => reject(error)
             )
         })
+    }
+
+    getAuth(){
+        return this.authService.authState.pipe( //esto regresaria el usuario autenticado en caso de haberlo
+            map(auth => auth)
+        );
+    }
+
+    logout(){
+        this.authService.signOut();
     }
 }

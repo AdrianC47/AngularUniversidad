@@ -16,6 +16,13 @@ export class LoginComponent implements OnInit {
   constructor(private  router:Router, private flashMessages: FlashMessagesService, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    if(this.loginService.getAuth().subscribe(auth=>{
+      if(auth){ // al iniciar el componente login preguntamos si el objeto auth existe y en caso de existir significaria que esta logeado, entonces se debe redireccionar  
+        this.router.navigate(['/']) //a la pag de  Inicio ya que el usuario ya esta logeado
+      }
+    })){
+
+    }
   }
   
   login(){
