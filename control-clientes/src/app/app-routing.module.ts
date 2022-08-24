@@ -14,7 +14,7 @@ const routes: Routes = [
    {path: 'login', component:LoginComponent}, //es decir indicamos que paginas requieres de autenticacion para su acceso como las que no
    {path: 'registrarse', component:RegistroComponent, canActivate:[ConfiguracionGuard]},
    {path: 'configuracion', component:ConfiguracionComponent, canActivate:[AuthGuard]},
-   {path: 'cliente/editar/:id', component:EditarClienteComponent, canActivate:[AuthGuard]},
+   {path: 'cliente/editar/:id', component:EditarClienteComponent},
    {path: '**', component: NoEncontradoComponent},
 ];
 

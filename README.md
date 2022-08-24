@@ -14,7 +14,7 @@ Si no se tiene la carpeta node modules se instala con <== npm install
 Generar un nuevo modulo routing <== ng g module app-routing
 Para compilar la applicacion para desplegarla en  produccion (generar dist) se usa <= ng build --prod --aot Ojo que esto esta pensado
 si es que se publica nuestra aplicación a nivel raíz del servidor, sin embargo si la aplicación se requiere publicar
-dentro de una carpeta se usa ng build --prod --aot --base-href /nombreCarpeta/
+dentro de una carpeta se usa ng build --prod --aot --base-href /nombreCarpeta/ (para nuevas versiones de angular ng build --aot)
 
 npm install -g firebase-tools <== Para agregar nuestro sitio en el alojamiento de firebase
 firebase hosting:disable <= Para desahbilitar mi sitio de firebase
